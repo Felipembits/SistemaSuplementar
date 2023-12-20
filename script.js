@@ -1,5 +1,52 @@
+class MobileNavBar {
+  constructor () {
+    this.mobileMenu = document.querySelector('.mobile-menu');
+    this.navList = document.querySelector('.nav-list');
+    this.navLinks = document.querySelectorAll('navLinks');
+    this.activeClass = 'active';
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  animateLinks() {
+    this.navLinks.forEach((link) => {
+      link.style.animation
+      ? (link.style.animation = "")
+      : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`)
+    })
+  
+  }
+
+  handleClick() {
+    this.navList.classList.toggle(this.activeClass);
+    this.animateLinks()
+  }
+
+
+  addClickEvent() {
+    this.mobileMenu.addEventListener('click', this.handleClick);
+  }
+
+  init(){
+    if (this.mobileMenu) {
+      this.addClickEvent();
+    }
+    return this;
+  
+  }
+}
+
+const mobileNavBar = new MobileNavBar(
+  ".mobile-menu",
+  ".nav-list",
+  ".nav-list li",
+)
+
+mobileNavBar.init()
+
 listaProdutos = document.querySelector('.containerProdutos');
 barraPesquisa = document.querySelector('.searchBar');
+botaoPesquisa = document.querySelector('.searchButton')
+
 
 let itens = [
     {nome: 'Creatina Black Skull',
@@ -29,16 +76,15 @@ let itens = [
 ]
 
 function renderizarProdutos(itens) {
+    listaProdutos.innerHTML = '';
     for (let item of itens) {
-        // Cria um novo elemento div
-        let div = document.createElement('div');
+
+      let div = document.createElement('div');
         div.className = 'cardProduto';
         
-        // Cria um novo elemento div para a ilustração
         let ilustracao = document.createElement('div');
         ilustracao.className = 'ilustracao';
   
-        // Cria um novo elemento img para o botão adicionar ao carrinho
         let imgAddToCart = document.createElement('img');
         imgAddToCart.src = './assets/addToCart.svg';
         imgAddToCart.className = 'addToCart';
@@ -47,45 +93,45 @@ function renderizarProdutos(itens) {
         imgProduto.src = item.imagem;
         imgProduto.className = 'imgProduto';
         
-  
-        // Anexa o botão adicionar ao carrinho à div de ilustração
         ilustracao.appendChild(imgAddToCart);
         ilustracao.appendChild(imgProduto);
 
-        // Anexa a div de ilustração à div do produto
         div.appendChild(ilustracao);
   
-        // Cria um novo elemento h4 para o nome do produto
         let nome = document.createElement('h4');
         nome.textContent = item.nome;
   
-        // Anexa o nome do produto à div do produto
         div.appendChild(nome);
   
-        // Cria um novo elemento p para o preço do produto
         let preco = document.createElement('p');
         preco.textContent = item.preco;
   
-        // Anexa o preço do produto à div do produto
         div.appendChild(preco);
   
-        // Anexa a div do produto à lista de produtos
         listaProdutos.appendChild(div);
     }
  }
- 
- 
- 
 
 
-function pesquisarProdutos(criterio) {
-    let resultados = [];
-    for (let produto of produtos) {
-      if (produto.nome.includes(criterio) || produto.descricao.includes(criterio)) {
-        resultados.push(produto);
-      }
+ function pesquisarProdutos(criterio, produtos) {
+  if (criterio === '') {
+    return produtos;
+  }
+  let resultados = [];
+  for (let produto of produtos) {
+    if (produto.nome.includes(criterio)) {
+      resultados.push(produto);
     }
-    return resultados;
-   }
+  }
+  return resultados;
+ }
+ 
+
+ barraPesquisa.addEventListener('input', (event) => {
+  const valorPesquisa = event.target.value;
+  resultados = pesquisarProdutos(valorPesquisa, itens);
+  renderizarProdutos(resultados);
+ });
+ 
 
 renderizarProdutos(itens);

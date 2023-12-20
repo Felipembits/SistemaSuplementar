@@ -68,10 +68,12 @@ header {
     display: flex;
     align-items: center;
     gap: 5.3rem;
+    width: 100%;
+    justify-content: space-between;
 
 }
 
-.navHeader > ul{
+.nav-list{
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -98,24 +100,36 @@ header {
 .person:hover, .shoppingCartHeader:hover {
     transform: scale(1.1);
 }
-/* 
-.menu {
+
+.person {
+    margin-left: 2rem;
+}
+
+.nav-list > li {
+    letter-spacing: 3px;
+}
+
+.mobile-menu {
     display: none;
     cursor: pointer;
 }
 
-.menu > div {
+.mobile-menu > div {
     width: 2rem;
     height: 2px;
     margin: 8px;
     background-color: #fff;
-} */
+}
 
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem
+}
+
+.wrapper > div {
+    align-self: flex-start;
 }
 
 .title {
@@ -141,11 +155,12 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem;
-    max-width: 25rem;
+    max-width: 21rem;
     border-radius: 15px;
     width: 100%;
     background-color: #fff;
     height: 3.75rem;
+    transform: translateY(-115px);
 }
 
 .searchArea > div {
@@ -185,7 +200,7 @@ header {
 .coachSection {
     display: flex;
     justify-content: center;
-    margin: 9rem 0;
+    margin: 5rem 0;
     width: 100%;
     gap: 1rem;
 }
@@ -266,9 +281,10 @@ header {
 .cardProduto > h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #000;
     text-align: center;
+    max-width: 20rem;
 }
 
 .verMais {
@@ -315,7 +331,7 @@ header {
 .contato1 {
     display: flex;
     align-items: center;
-    margin-top: 3.8rem;
+    margin-top: 1.8rem;
     gap: .5rem;
 }
 
@@ -402,15 +418,55 @@ footer {
 
     .searchArea {
         max-width: none;
+        transform: translateY(0px);
     }
 
-    .menu {
+    .mobile-menu {
         display: block;
+    }
+
+    .nav-list {
+        position: absolute;
+        top: 15vh;
+        right: 0;
+        width: 30vw;
+        height: 50vh;
+        color: #000;
+        border: 1px solid #000;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform .3s ease-in
+    }
+
+    .nav-list > li {
+        margin: 0;
+    }
+
+    .navHeader > ul > li > a {
+        color: #000;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .nav-list > li > img {
+        filter: invert(1);
+        width: 30px;
     }
 
     .navHeader {
         gap: 2rem;    
-}
+    }
+    .nav-list.active {
+        transform: translateX(0);
+        margin-right: 8rem;
+    }
+
+    .person {
+        margin-left: 0;
+    }
 }
 
 .imgProduto {
@@ -446,4 +502,45 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
+    .encomendasTitulo {
+        font-size: 1.5rem;
+    }
+
+    .paragraph {
+        text-align: center;
+    }
+
+    .home {
+        padding: 1.25rem 2rem;
+    
+    }
+
+    .nav-list.active {
+        margin-right: 2rem;
+        min-width: 12.5rem;
+    }
 }
+
+@media (max-width: 400px) {
+    .searchBar {
+        font-size: .7rem;
+    }
+
+    .searchButton {
+        font-size: .7rem;
+        width: 20%;
+    }
+}
+
+@keyframes navLinkFade{
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
