@@ -60,8 +60,7 @@ header {
 }
 
 .logo {
-    margin-top: 1.5rem;
-    width: 160px;
+    width: 150px;
 }
 
 .navHeader {
@@ -287,7 +286,7 @@ header {
     max-width: 20rem;
 }
 
-.verMais {
+#verMais {
     margin-top: 2.75rem;
     border-radius: 15px;
     background-color: #3858D6;
@@ -298,6 +297,11 @@ header {
     width: 12.25rem;
     font-size: 18px;
     height: 2.87rem;
+    display: none;
+}
+
+#verMais.active {
+    display: block;
 }
 
 .encomendas {
@@ -355,11 +359,11 @@ footer {
     height: 4rem;
 }
 
-.btn {
+.btn, #verMais {
     transition: all .2s ease-in-out;
 }
 
-.btn:hover {
+.btn:hover , #verMais:hover{
     background-color: #2e4cc3;
 }
 
@@ -460,6 +464,7 @@ footer {
         gap: 2rem;    
     }
     .nav-list.active {
+        z-index: 1;
         transform: translateX(0);
         margin-right: 8rem;
     }

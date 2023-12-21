@@ -1,3 +1,10 @@
+const listaProdutos = document.querySelector('.containerProdutos');
+const barraPesquisa = document.querySelector('.searchBar');
+const botaoPesquisa = document.querySelector('.searchButton')
+const botaoProdutos = document.querySelector('.btnProdutos');
+const botaoContatos = document.querySelector('.btnContatos');
+const botaoVerMais = document.querySelector('#verMais');
+
 class MobileNavBar {
   constructor () {
     this.mobileMenu = document.querySelector('.mobile-menu');
@@ -43,12 +50,7 @@ const mobileNavBar = new MobileNavBar(
 
 mobileNavBar.init()
 
-const listaProdutos = document.querySelector('.containerProdutos');
-const barraPesquisa = document.querySelector('.searchBar');
-const botaoPesquisa = document.querySelector('.searchButton')
-const botaoProdutos = document.querySelector('.btnProdutos');
-
-let itens = [
+let itensList = [
     {nome: 'Creatina Black Skull',
     preco: 'R$ 100,00',
     imagem: './assets/creatinaBlack.svg'
@@ -109,6 +111,20 @@ function renderizarProdutos(itens) {
         div.appendChild(preco);
   
         listaProdutos.appendChild(div);
+   
+
+    }
+    let displayedProducts = listaProdutos.childElementCount;
+    let totalProducts = itensList.length;
+
+    if (displayedProducts === totalProducts && botaoVerMais.classList.contains('active')) {
+      botaoVerMais.classList.remove('active');
+    }
+    else if (displayedProducts === totalProducts) {
+      return;
+    }
+    else {
+      botaoVerMais.classList.add('active');
     }
  }
 
@@ -128,7 +144,7 @@ function renderizarProdutos(itens) {
 
  barraPesquisa.addEventListener('input', (event) => {
   const valorPesquisa = event.target.value;
-  resultados = pesquisarProdutos(valorPesquisa, itens);
+  resultados = pesquisarProdutos(valorPesquisa, itensList);
   renderizarProdutos(resultados);
  });
  
@@ -149,4 +165,12 @@ function renderizarProdutos(itens) {
   });
  });
 
-renderizarProdutos(itens);
+ botaoContatos.addEventListener('click', function() {
+  let posicaoContatos = document.querySelector('.encomendasTitulo').offsetTop;
+  window.scrollTo({
+    top: posicaoContatos - 25,
+    behavior: "smooth"
+  });
+ });
+
+renderizarProdutos(itensList);
