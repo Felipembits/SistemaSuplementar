@@ -43,10 +43,10 @@ const mobileNavBar = new MobileNavBar(
 
 mobileNavBar.init()
 
-listaProdutos = document.querySelector('.containerProdutos');
-barraPesquisa = document.querySelector('.searchBar');
-botaoPesquisa = document.querySelector('.searchButton')
-
+const listaProdutos = document.querySelector('.containerProdutos');
+const barraPesquisa = document.querySelector('.searchBar');
+const botaoPesquisa = document.querySelector('.searchButton')
+const botaoProdutos = document.querySelector('.btnProdutos');
 
 let itens = [
     {nome: 'Creatina Black Skull',
@@ -112,14 +112,13 @@ function renderizarProdutos(itens) {
     }
  }
 
-
  function pesquisarProdutos(criterio, produtos) {
   if (criterio === '') {
     return produtos;
   }
   let resultados = [];
   for (let produto of produtos) {
-    if (produto.nome.includes(criterio)) {
+    if (produto.nome.toLowerCase().includes(criterio.toLowerCase())) {
       resultados.push(produto);
     }
   }
@@ -133,5 +132,21 @@ function renderizarProdutos(itens) {
   renderizarProdutos(resultados);
  });
  
+ botaoPesquisa.addEventListener('click', function() {
+  if (barraPesquisa.value !== '') {
+    window.scrollTo({
+      top: 1200,
+      behavior: "smooth"
+    });
+  }
+ });
+ 
+ botaoProdutos.addEventListener('click', function() {
+  let posicaoProdutos = document.querySelector('.titleProdutos').offsetTop;
+  window.scrollTo({
+    top: posicaoProdutos - 25,
+    behavior: "smooth"
+  });
+ });
 
 renderizarProdutos(itens);
