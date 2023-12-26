@@ -538,6 +538,7 @@ footer {
 .close {
     border: none;
     background: none;
+    color: #fff;
 }
 
 .formContato {

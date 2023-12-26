@@ -7,6 +7,8 @@ const botaoVerMais = document.querySelector('#verMais');
 const botaoLogin = document.querySelector('.person');
 const closeDialog = document.querySelector('.close');
 let modalLogin = document.querySelector('#loginDialog');
+let cliquesVerMais = 0;
+let contador = 0;
 
 class MobileNavBar {
   constructor () {
@@ -80,9 +82,25 @@ let itensList = [
     }
 ]
 
-function renderizarProdutos(itens) {
+  function renderizarProdutos(itens) {
     listaProdutos.innerHTML = '';
+    if (cliquesVerMais === 0) {
+      contador = 0;
+    }
+    else {
+      console.log(cliquesVerMais);
+      contador = 6 * (cliquesVerMais + 1) * -1;
+      console.log(contador);
+        if (contador > itens.length) {
+          contador = itens.length * -1;
+        }
+      }
+
     for (let item of itens) {
+        if (contador > 5) {
+          break;
+        }
+        contador++;
 
       let div = document.createElement('div');
         div.className = 'cardProduto';
@@ -176,8 +194,12 @@ function renderizarProdutos(itens) {
   });
  });
 
+  botaoVerMais.addEventListener('click', function() {
+    cliquesVerMais++;
+    renderizarProdutos(itensList);
+  })
+
  botaoLogin.addEventListener('click', function() {
-  console.log(modalLogin);
   modalLogin.showModal();
 })
 
