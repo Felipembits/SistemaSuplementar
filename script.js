@@ -196,6 +196,7 @@ let itensList = [
 
   botaoVerMais.addEventListener('click', function() {
     cliquesVerMais++;
+    barraPesquisa.value = '';
     renderizarProdutos(itensList);
   })
 
