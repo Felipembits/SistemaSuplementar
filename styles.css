@@ -431,7 +431,7 @@ footer {
 
     .nav-list {
         position: absolute;
-        top: 7vh;
+        top: 12vh;
         right: 0;
         width: 30vw;
         height: 50vh;
@@ -525,6 +525,108 @@ footer {
         margin-right: 2rem;
         min-width: 12.5rem;
     }
+}
+
+#loginDialog {
+    border: none;
+    width: 30rem;
+    padding: 0;
+    border-radius: 6px;
+    background-color: #1e1e1e;
+}
+
+.close {
+    border: none;
+    background: none;
+}
+
+.formContato {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.formContato > input {
+    background-color: #292929;
+    border: none;
+    border-radius: 6px;
+    height: 2rem;
+    padding: 0 1rem;
+}
+
+.formContato > button {
+    border: none;
+    background-color: #3858D6;
+    color: #fff;
+    border-radius: 6px;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.formContato > label {
+    color: #fff;
+    font-size: .8rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+    padding-bottom: 0;
+}
+
+.modal {
+    display: flex;
+    padding: 2rem;
+    gap: 1rem;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.modalText > h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.modalText > p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #696a6a;
+    margin-top: .5rem;
+}
+
+.linha {
+    width: 100%;
+    height: 1px;
+    background-color: #696a6a;
+    margin-top: 1rem;
+}
+
+.wppGroup {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.wppGroup > p {
+    color: #fff;
+}
+
+.entrar {
+    border: none;
+    background-color: #3858D6;
+    color: #fff;
+    border-radius: 6px;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 @media (max-width: 400px) {

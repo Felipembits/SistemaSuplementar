@@ -4,6 +4,9 @@ const botaoPesquisa = document.querySelector('.searchButton')
 const botaoProdutos = document.querySelector('.btnProdutos');
 const botaoContatos = document.querySelector('.btnContatos');
 const botaoVerMais = document.querySelector('#verMais');
+const botaoLogin = document.querySelector('.person');
+const closeDialog = document.querySelector('.close');
+let modalLogin = document.querySelector('#loginDialog');
 
 class MobileNavBar {
   constructor () {
@@ -172,5 +175,14 @@ function renderizarProdutos(itens) {
     behavior: "smooth"
   });
  });
+
+ botaoLogin.addEventListener('click', function() {
+  console.log(modalLogin);
+  modalLogin.showModal();
+})
+
+closeDialog.addEventListener('click', function() {
+  modalLogin.close();
+})
 
 renderizarProdutos(itensList);
