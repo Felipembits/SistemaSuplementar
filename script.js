@@ -88,9 +88,7 @@ let itensList = [
       contador = 0;
     }
     else {
-      console.log(cliquesVerMais);
       contador = 6 * (cliquesVerMais + 1) * -1;
-      console.log(contador);
         if (contador > itens.length) {
           contador = itens.length * -1;
         }
