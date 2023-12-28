@@ -288,19 +288,27 @@ header {
 .addToCart {
     align-self: flex-end;
     display: none;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 
+.addToCart:hover {
+    transform: scale(1.02);
+    box-shadow: black -1px -1px 20px -10px;
+}
 
 .cardProduto:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
+
+    .ilustracao {
+        justify-content: space-between;
+    }
 
     .addToCart {
         display: block;
     }
 
-    .ilustracao {
-        justify-content: space-between;
-    }
 }
 
 .cardProduto > h4 {
