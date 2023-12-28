@@ -140,7 +140,7 @@ header {
 }
 
 .logo {
-  width: 150px;
+  width: 100px;
 }
 
 .navHeader {
@@ -206,7 +206,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .wrapper > div {
@@ -514,9 +514,6 @@ footer {
     font-size: 2rem;
   }
 
-  .logo {
-    width: 120px;
-  }
 }
 
 @media (max-width: 1000px) {
@@ -659,6 +656,19 @@ footer {
   color: #fff;
 }
 
+#addToCartDialog {
+    border: none;
+    width: 30rem;
+    padding: 0;
+    border-radius: 6px;
+}
+
+.closeAddToCart {
+  border: none;
+  background: none;
+  color: #000;
+}
+
 .formContato {
   display: flex;
   flex-direction: column;
@@ -673,7 +683,7 @@ footer {
   padding: 0 1rem;
 }
 
-.formContato > button {
+.formContato > button, .entrar {
   border: none;
   background-color: #3858d6;
   color: #fff;
@@ -681,7 +691,6 @@ footer {
   height: 2rem;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 500;
 }
 
 .formContato > label {
@@ -696,12 +705,20 @@ footer {
   padding-bottom: 0;
 }
 
-.modal {
+.modalPerson, .modalProduto {
   display: flex;
   padding: 2rem;
   gap: 1rem;
   flex-direction: column;
   padding-top: 1rem;
+}
+
+.modalProduto {
+    align-items: center;
+}
+
+.modalProduto > img {
+    width: 50%;
 }
 
 .modalText > h2 {
@@ -736,16 +753,6 @@ footer {
 
 .wppGroup > p {
   color: #fff;
-}
-
-.entrar {
-  border: none;
-  background-color: #3858d6;
-  color: #fff;
-  border-radius: 6px;
-  height: 2rem;
-  cursor: pointer;
-  font-size: 16px;
 }
 
 @media (max-width: 400px) {

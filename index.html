@@ -68,6 +68,7 @@
         </div>
       </section>
     </section>
+    <div class="barraGradiente"></div>
     <main>
       <section class="coachSection">
         <div class="halterDiv">
@@ -110,7 +111,7 @@
       <div class="modal-header">
         <button class="close">x</button>
       </div>
-      <div class="modal">
+      <div class="modalPerson">
         <div class="modalText">
           <h2>Inscreva-se!</h2>
           <p>
@@ -133,10 +134,16 @@
         <button class="entrar">Entrar</button>
       </div>
     </dialog>
-    <dialog id="carrinhoDialog">
+    <dialog id="addToCartDialog">
+      <div class="modal-header">
+        <button class="closeAddToCart">x</button>
+      </div>
       <div class="modalProduto">
-        <h2>Nome do Produto01</h2>
-        <h2>Nome do Produto02</h2>
+        <h2 class="nomeProduto">Nome do Produto01</h2>
+        <img id="imagemProdutoModal" class="imgProdutoModal" src="" alt="Imagem do Produto">
+        <p>Descriçao</p>
+        <p class="precoProduto">R$ 00,00</p>
+        <button class="btnAddToCart">Adicionar ao carrinho</button>
       </div>
     </dialog>
   </body>

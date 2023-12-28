@@ -6,10 +6,12 @@ const botaoContatos = document.querySelector(".btnContatos");
 const botaoVerMais = document.querySelector("#verMais");
 const botaoLogin = document.querySelector(".ph-user");
 const closeDialog = document.querySelector(".close");
+const closeAddToCart = document.querySelector(".closeAddToCart");
+const modalCarrinho = document.querySelector("#addToCartDialog");
+
 let modalLogin = document.querySelector("#loginDialog");
 let cliquesVerMais = 0;
 let contador = 0;
-
 class MobileNavBar {
   constructor() {
     this.mobileMenu = document.querySelector(".mobile-menu");
@@ -48,37 +50,43 @@ let itensList = [
     nome: "Creatina Black Skull",
     preco: "R$ 100,00",
     imagem: "./assets/creatinaBlack.svg",
+    id: 1,
   },
   {
     nome: "Creatina IntegralMedica",
     preco: "R$ 100,00",
     imagem: "./assets/creatinaIntegral.svg",
+    id: 2,
   },
   {
     nome: "Pré-treino Hórus Max Titanium",
     preco: "R$ 100,00",
     imagem: "./assets/horus.svg",
+    id: 3,
   },
   {
     nome: "Whey Concentrado Nutrata",
     preco: "R$ 100,00",
     imagem: "./assets/wheyNutrata.svg",
+    id: 4,
   },
   {
     nome: "Whey 100% Pro Max Titanium",
     preco: "R$ 100,00",
     imagem: "./assets/maxWhey.svg",
+    id: 5,
   },
   {
     nome: "Whey 100% Pure IntegralMedica Refil",
     preco: "R$ 100,00",
     imagem: "./assets/integralMedicaRefil.svg",
+    id: 6,
   },
 ];
 
 function renderizarProdutos(itens) {
   listaProdutos.innerHTML = "";
-  
+
   if (cliquesVerMais === 0) {
     contador = 0;
   } else {
@@ -96,18 +104,26 @@ function renderizarProdutos(itens) {
 
     let div = document.createElement("div");
     div.className = "cardProduto";
-
+    div.id = "cardProduto" + item.id;
     let ilustracao = document.createElement("div");
+
     ilustracao.className = "ilustracao";
+    ilustracao.id = "ilustracao" + item.id;
+
 
     let imgAddToCart = document.createElement("img");
     imgAddToCart.src = "./assets/addToCart.svg";
     imgAddToCart.className = "addToCart";
+    imgAddToCart.id = "addToCart" + item.id;
 
     let imgProduto = document.createElement("img");
     imgProduto.src = item.imagem;
     imgProduto.className = "imgProduto";
-
+    imgProduto.id = "imgProduto" + item.id;
+    imgAddToCart.addEventListener("click", function () {
+      abrirModal(item.nome, item.imagem);
+    });
+    
     ilustracao.appendChild(imgAddToCart);
     ilustracao.appendChild(imgProduto);
 
@@ -139,6 +155,17 @@ function renderizarProdutos(itens) {
     botaoVerMais.classList.add("active");
   }
 }
+
+function abrirModal(nome, imagem) {
+  let nomeProduto = document.querySelector(".nomeProduto");
+  nomeProduto.textContent = nome;
+
+  let imagemProdutoModal = document.getElementById("imagemProdutoModal");
+  imagemProdutoModal.src = imagem;
+
+  modalCarrinho.showModal();
+}
+
 
 function pesquisarProdutos(criterio, produtos) {
   if (criterio === "") {
@@ -197,5 +224,9 @@ botaoLogin.addEventListener("click", function () {
 closeDialog.addEventListener("click", function () {
   modalLogin.close();
 });
+
+closeAddToCart.addEventListener("click", function () {
+  modalCarrinho.close();
+})
 
 renderizarProdutos(itensList);
