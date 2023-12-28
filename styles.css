@@ -745,8 +745,8 @@ footer {
 }
 
 #quantidade {
+  padding: .5rem;
     height: 2rem;
-    width: 2rem;
     border-radius: 6px;
 }
 
