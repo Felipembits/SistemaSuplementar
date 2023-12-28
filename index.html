@@ -120,9 +120,9 @@
           </p>
         </div>
         <form action="" class="formContato">
-          <label for="">Nome:</label>
+          <label>Nome:</label>
           <input type="text" />
-          <label for="">Email ou telefone:</label>
+          <label>Email ou telefone:</label>
           <input type="text" />
           <button>Enviar</button>
         </form>
@@ -139,11 +139,28 @@
         <button class="closeAddToCart">x</button>
       </div>
       <div class="modalProduto">
-        <h2 class="nomeProduto">Nome do Produto01</h2>
-        <img id="imagemProdutoModal" class="imgProdutoModal" src="" alt="Imagem do Produto">
-        <p>Descriçao</p>
-        <p class="precoProduto">R$ 00,00</p>
-        <button class="btnAddToCart">Adicionar ao carrinho</button>
+        <div class="nomeFoto">
+          <h2 class="nomeProduto">Nome do Produto01</h2>
+          <img
+            id="imagemProdutoModal"
+            class="imgProdutoModal"
+            src=""
+            alt="Imagem do Produto"
+          />
+          </div>
+          <div>
+            <p>Descriçao</p>
+            <p class="precoProduto">R$ 00,00</p>
+          </div>
+          <div class="modalButtons">
+            <select name="qtd" id="quantidade">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <button class="btnAddToCart">Adicionar ao carrinho</button>
+            </div>
+          </div>
       </div>
     </dialog>
   </body>

@@ -133,6 +133,10 @@ table {
   background-image: linear-gradient(340deg, #000000, #000000, #000000, #383638);
 }
 
+dialog {
+    animation: dialog-enter 0.2s ease-out;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -367,13 +371,7 @@ header {
   align-self: flex-end;
   display: none;
   border-radius: 50%;
-  transition: all 0.2s ease-in-out;
   cursor: pointer;
-}
-
-.addToCart:hover {
-  transform: scale(1.02);
-  box-shadow: black -1px -1px 20px -10px;
 }
 
 .cardProduto:hover {
@@ -654,6 +652,7 @@ footer {
   border: none;
   background: none;
   color: #fff;
+  cursor: pointer;
 }
 
 #addToCartDialog {
@@ -667,6 +666,7 @@ footer {
   border: none;
   background: none;
   color: #000;
+  cursor: pointer;
 }
 
 .formContato {
@@ -683,7 +683,7 @@ footer {
   padding: 0 1rem;
 }
 
-.formContato > button, .entrar {
+.formContato > button, .entrar, .btnAddToCart {
   border: none;
   background-color: #3858d6;
   color: #fff;
@@ -691,6 +691,11 @@ footer {
   height: 2rem;
   cursor: pointer;
   font-size: 16px;
+}
+
+.btnAddToCart {
+  min-height: 2rem;
+  height: auto;
 }
 
 .formContato > label {
@@ -717,8 +722,32 @@ footer {
     align-items: center;
 }
 
-.modalProduto > img {
-    width: 50%;
+.nomeProduto {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.nomeFoto {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nomeFoto > img {
+    width: 80%;
+}
+
+.modalButtons {
+    display: flex;
+    gap: .5rem;
+}
+
+#quantidade {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 6px;
 }
 
 .modalText > h2 {
@@ -806,3 +835,31 @@ footer {
     margin-top: 2rem;
   }
 }
+
+@keyframes dialog-enter {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes backdrop-enter {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.448);
+    animation: 0.3s ease-out backdrop-enter;
+  }
+  

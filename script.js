@@ -120,13 +120,14 @@ function renderizarProdutos(itens) {
     imgProduto.src = item.imagem;
     imgProduto.className = "imgProduto";
     imgProduto.id = "imgProduto" + item.id;
-    imgAddToCart.addEventListener("click", function () {
-      abrirModal(item.nome, item.imagem);
-    });
+    
     
     ilustracao.appendChild(imgAddToCart);
     ilustracao.appendChild(imgProduto);
 
+    ilustracao.addEventListener("click", function () {
+      abrirModal(item.nome, item.imagem, item.preco);
+    });
     div.appendChild(ilustracao);
 
     let nome = document.createElement("h4");
@@ -156,12 +157,15 @@ function renderizarProdutos(itens) {
   }
 }
 
-function abrirModal(nome, imagem) {
+function abrirModal(nome, imagem, preco) {
   let nomeProduto = document.querySelector(".nomeProduto");
   nomeProduto.textContent = nome;
 
   let imagemProdutoModal = document.getElementById("imagemProdutoModal");
   imagemProdutoModal.src = imagem;
+
+  let precoProduto = document.querySelector(".precoProduto");
+  precoProduto.textContent = preco;
 
   modalCarrinho.showModal();
 }
