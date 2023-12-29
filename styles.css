@@ -178,9 +178,9 @@ header {
   transition: all 0.2s ease-in-out;
 }
 
-.nav-listMenu > li > a {
+.btnHome, .btnProdutos, .btnContatos, .btnAboutUs {
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #fff;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
@@ -201,10 +201,6 @@ header {
 .ph-bold.ph-user:before:hover,
 .ph-shopping-cart-simple:hover {
   transform: scale(1.1);
-}
-
-.ph-bold.ph-user:before {
-  margin-left: 2rem;
 }
 
 .nav-list > li {
@@ -560,11 +556,8 @@ footer {
     display: none;
   }
 
-  .navHeader > ul > li > a,
-  .ph-bold.ph-user:before,
-  .ph-shopping-cart-simple {
-    color: #000;
-    font-size: 1.5rem;
+  .ph-bold {
+    font-size: 2.5rem;
   }
 
   .navHeader > ul > li > a {
@@ -576,9 +569,6 @@ footer {
     gap: 2rem;
   }
 
-  .ph-bold.ph-user:before {
-    margin-left: 0;
-  }
 }
 
 .imgProduto {
@@ -592,6 +582,10 @@ footer {
 }
 
 @media (max-width: 800px) {
+  .navHeader {
+    padding: 0 2rem;
+  }
+
   .wrapper {
     flex-direction: column;
   }
@@ -679,7 +673,7 @@ footer {
   border-radius: 6px;
   height: 2rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .btnAddToCart {
@@ -696,17 +690,20 @@ footer {
   background-color: transparent;
   width: 100%;
   height: 100%;
+  overflow-y: hidden;
 }
 
 .modalMenu {
-  padding: 8rem;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .modalHeaderMenu {
   display: flex;
   justify-content: flex-end;
-  padding: 8rem 8rem 0 8rem;
+  margin-right: 10%;
 }
 
 .modal-header {
@@ -840,7 +837,17 @@ footer {
     max-width: 12.5rem;
     margin-top: 2rem;
   }
+
+  .btnHome, .btnProdutos, .btnContatos, .btnAboutUs {
+    font-size: 1.3rem;
+  }
+
+  .ph-bold {
+    font-size: 2rem;
+  }
 }
+
+  
 
 @keyframes dialog-enter {
     from {

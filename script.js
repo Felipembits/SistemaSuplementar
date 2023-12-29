@@ -24,18 +24,19 @@ class MobileNavBar {
 
   handleClick() {
     this.menu.showModal();
-  }
-
+   }
+   
+   addCloseEvent() {
+      this.menu.close();
+    
+   }
+   
   addClickEvent() {
     this.mobileMenu.addEventListener("click", this.handleClick);
+    this.closeMenu.addEventListener("click", this.addCloseEvent);
   }
 
-  addCloseEvent() {
-    this.closeMenu.addEventListener("click", function () {
-      menu.close();
-    });
-  
-  }
+
 
   init() {
     if (this.mobileMenu) {
