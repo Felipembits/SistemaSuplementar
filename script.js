@@ -1,13 +1,14 @@
 const listaProdutos = document.querySelector(".containerProdutos");
 const barraPesquisa = document.querySelector(".searchBar");
 const botaoPesquisa = document.querySelector(".searchButton");
-const botaoProdutos = document.querySelector(".btnProdutos");
-const botaoContatos = document.querySelector(".btnContatos");
+const botaoProdutos = document.querySelectorAll(".btnProdutos");
+const botaoContatos = document.querySelectorAll(".btnContatos");
 const botaoVerMais = document.querySelector("#verMais");
-const botaoLogin = document.querySelector(".ph-user");
+const botaoInscricao = document.querySelectorAll(".ph-user");
 const closeDialog = document.querySelector(".close");
 const closeAddToCart = document.querySelector(".closeAddToCart");
 const modalCarrinho = document.querySelector("#addToCartDialog");
+const botaoHome = document.querySelectorAll(".btnHome");
 
 let modalLogin = document.querySelector("#loginDialog");
 let cliquesVerMais = 0;
@@ -15,18 +16,25 @@ let contador = 0;
 class MobileNavBar {
   constructor() {
     this.mobileMenu = document.querySelector(".mobile-menu");
-    this.navList = document.querySelector(".nav-list");
-    this.navLinks = document.querySelectorAll("navLinks");
-    this.activeClass = "active";
+    this.menu = document.querySelector(".menu");
+    this.closeMenu = document.querySelector(".closeMenu");
     this.handleClick = this.handleClick.bind(this);
+    this.addCloseEvent = this.addCloseEvent.bind(this);
   }
 
   handleClick() {
-    this.navList.classList.toggle(this.activeClass);
+    this.menu.showModal();
   }
 
   addClickEvent() {
     this.mobileMenu.addEventListener("click", this.handleClick);
+  }
+
+  addCloseEvent() {
+    this.closeMenu.addEventListener("click", function () {
+      menu.close();
+    });
+  
   }
 
   init() {
@@ -39,8 +47,8 @@ class MobileNavBar {
 
 const mobileNavBar = new MobileNavBar(
   ".mobile-menu",
-  ".nav-list",
-  ".nav-list li"
+  ".menu",
+  ".closeMenu",
 );
 
 mobileNavBar.init();
@@ -199,21 +207,38 @@ botaoPesquisa.addEventListener("click", function () {
   }
 });
 
-botaoProdutos.addEventListener("click", function () {
-  let posicaoProdutos = document.querySelector(".titleProdutos").offsetTop;
-  window.scrollTo({
-    top: posicaoProdutos - 25,
-    behavior: "smooth",
+
+botaoHome.forEach(botao => {
+  botao.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
+  });
+
+botaoProdutos.forEach(botao => {
+ botao.addEventListener("click", function () {
+   let posicaoProdutos = document.querySelector(".titleProdutos").offsetTop;
+   window.scrollTo({
+     top: posicaoProdutos - 25,
+     behavior: "smooth",
+   });
+ });
 });
 
-botaoContatos.addEventListener("click", function () {
-  let posicaoContatos = document.querySelector(".encomendasTitulo").offsetTop;
-  window.scrollTo({
-    top: posicaoContatos - 25,
-    behavior: "smooth",
-  });
+
+botaoContatos.forEach(botao => {
+ botao.addEventListener("click", function () {
+   let posicaoContatos = document.querySelector(".encomendas").offsetTop;
+   window.scrollTo({
+     top: posicaoContatos - 25,
+     behavior: "smooth",
+   });
+ });
 });
+
+
 
 botaoVerMais.addEventListener("click", function () {
   cliquesVerMais++;
@@ -221,9 +246,11 @@ botaoVerMais.addEventListener("click", function () {
   renderizarProdutos(itensList);
 });
 
-botaoLogin.addEventListener("click", function () {
-  modalLogin.showModal();
-});
+botaoInscricao.forEach(botao => {
+  botao.addEventListener("click", function () {
+    modalLogin.showModal();
+  });
+  });
 
 closeDialog.addEventListener("click", function () {
   modalLogin.close();
@@ -232,5 +259,29 @@ closeDialog.addEventListener("click", function () {
 closeAddToCart.addEventListener("click", function () {
   modalCarrinho.close();
 })
+
+// Definindo a altura inicial da div e a cor inicial
+var header = document.getElementById('header');
+header.style.backgroundColor = 'transparent'; // Cor inicial
+
+// Obtendo a altura do elemento que você deseja monitorar
+var targetElement = document.querySelector('.mainHome');
+var targetHeight = targetElement.offsetHeight;
+
+// Monitorando a altura do elemento
+window.onscroll = function() {
+  var rect = targetElement.getBoundingClientRect();
+  if(rect.top < 90) {
+      // Alterando a cor da header quando o elemento está na parte superior da janela de visualização
+      header.style.backgroundColor = '#000';
+  } else {
+      // Alterando a cor da header para transparente quando o elemento está na parte inferior da janela de visualização
+      header.style.backgroundColor = 'transparent';
+  }
+ };
+ 
+
+
+
 
 renderizarProdutos(itensList);

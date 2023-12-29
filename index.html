@@ -19,26 +19,27 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
+    <header id="header">
+      <nav class="navHeader">
+        <img src="./assets/logo.png" class="logo" />
+        <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+          <li><a href="#home" class="btnHome">Início</a></li>
+          <li><a href="#produtos" class="btnProdutos">Produtos</a></li>
+          <li><a href="#contato" class="btnContatos">Contato</a></li>
+          <li><a href="#sobre" class="btnAboutUs">Sobre nós</a></li>
+          <li><i class="ph-bold ph-user"></i></li>
+          <li>
+            <i class="ph-bold ph-shopping-cart-simple"></i>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <section class="home">
-      <header>
-        <nav class="navHeader">
-          <img src="./assets/logo.png" class="logo" />
-          <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-          <ul class="nav-list">
-            <li><a href="#produtos" class="btnProdutos">Produtos</a></li>
-            <li><a href="#contato" class="btnContatos">Contato</a></li>
-            <li><a href="#sobre" class="btnAboutUs">Sobre nós</a></li>
-            <li><i class="ph-bold ph-user"></i></li>
-            <li>
-              <i class="ph-bold ph-shopping-cart-simple"></i>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <section class="mainHome">
         <div class="wrapper">
           <div>
@@ -107,6 +108,23 @@
       <img src="./assets/ilustrativa02.png" />
     </section>
     <footer></footer>
+    <dialog class="menu">
+      <div class="modalHeaderMenu">
+        <button class="closeMenu">x</button>
+      </div>
+      <div class="modalMenu">
+        <ul class="nav-listMenu">
+          <li><a href="#home" class="btnHome">Início</a></li>
+          <li><a href="#produtos" class="btnProdutos">Produtos</a></li>
+          <li><a href="#contato" class="btnContatos">Contato</a></li>
+          <li><a href="#sobre" class="btnAboutUs">Sobre nós</a></li>
+          <li><i class="ph-bold ph-user"></i></li>
+          <li>
+            <i class="ph-bold ph-shopping-cart-simple"></i>
+          </li>
+        </ul>
+      </div>
+      </dialog>
     <dialog id="loginDialog">
       <div class="modal-header">
         <button class="close">x</button>

@@ -138,9 +138,10 @@ dialog {
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #00000063;
 }
 
 .logo {
@@ -150,8 +151,8 @@ header {
 .navHeader {
   display: flex;
   align-items: center;
-  gap: 5.3rem;
-  width: 100%;
+  padding: 0 8rem;
+  height: 5rem;
   justify-content: space-between;
 }
 
@@ -161,10 +162,26 @@ header {
   gap: 1rem;
 }
 
-.navHeader > ul > li > a {
+.nav-listMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+}
+
+.navHeader > ul > li > a{
   text-decoration: none;
-  font-size: 1rem;
-  color: #8b8e99;
+  font-size: .8rem;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-listMenu > li > a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: #fff;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   transition: all 0.2s ease-in-out;
@@ -210,7 +227,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 8rem;
 }
 
 .wrapper > div {
@@ -540,22 +557,7 @@ footer {
   }
 
   .nav-list {
-    position: absolute;
-    top: 15vh;
-    right: 0;
-    width: 30vw;
-    color: #000;
-    border: 1px solid #000;
-    background-color: #fff;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-right: 8rem;
-    z-index: -1;
-  }
-
-  .nav-list > li {
-    margin: 0;
+    display: none;
   }
 
   .navHeader > ul > li > a,
@@ -570,17 +572,8 @@ footer {
     font-weight: 500;
   }
 
-  .nav-list > li > img {
-    filter: invert(1);
-    width: 30px;
-  }
-
   .navHeader {
     gap: 2rem;
-  }
-  .nav-list.active {
-    z-index: 1;
-    height: 50vh;
   }
 
   .ph-bold.ph-user:before {
@@ -633,11 +626,6 @@ footer {
   .home {
     padding: 1.25rem 2rem;
   }
-
-  .nav-list.active {
-    margin-right: 2rem;
-    min-width: 12.5rem;
-  }
 }
 
 #loginDialog {
@@ -648,11 +636,15 @@ footer {
   background-color: #1e1e1e;
 }
 
-.close {
+.close, .closeMenu, .closeAddToCart {
   border: none;
   background: none;
   color: #fff;
   cursor: pointer;
+}
+
+.closeMenu {
+  font-size: 2.5rem;
 }
 
 #addToCartDialog {
@@ -663,10 +655,7 @@ footer {
 }
 
 .closeAddToCart {
-  border: none;
-  background: none;
   color: #000;
-  cursor: pointer;
 }
 
 .formContato {
@@ -701,6 +690,23 @@ footer {
 .formContato > label {
   color: #fff;
   font-size: 0.8rem;
+}
+
+.menu {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.modalMenu {
+  padding: 8rem;
+
+}
+
+.modalHeaderMenu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8rem 8rem 0 8rem;
 }
 
 .modal-header {
@@ -859,7 +865,7 @@ footer {
   }
   
   dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.448);
+    background-color: rgba(0, 0, 0, 0.584);
     animation: 0.3s ease-out backdrop-enter;
   }
   
